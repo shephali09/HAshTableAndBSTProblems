@@ -6,9 +6,9 @@ public class HashTableProblem {
 
 	public static void main(String[] args) {
 
-		String sentence = "To be or not to be";
+		String sentence = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
 
-		// split the sentemce into words
+		// split the sentence into words
 		String[] words = sentence.split(" ");
 
 		Hashtable<String, Integer> table = new Hashtable<>();
@@ -27,14 +27,14 @@ public class HashTableProblem {
 				table.put(word, 1);
 			}
 		}
-		
-		//print the word and its count
+
+		// print the word and its count
 		Enumeration<String> keys = table.keys();
-		while(keys.hasMoreElements()){
+		while (keys.hasMoreElements()) {
 			String key = keys.nextElement();
 			int value = table.get(key);
-			System.out.println(key +" : " + value);
-			
+			System.out.println(key + " : " + value);
+
 		}
 	}
 
