@@ -5,36 +5,41 @@ import java.util.*;
 public class HashTableProblem {
 
 	public static void main(String[] args) {
+		String paragraph = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations.";
 
-		String sentence = "Paranoids are not paranoid because they are paranoid but because they keep putting themselves deliberately into paranoid avoidable situations";
+		// Remove punctuations and convert the paragraph to lowercase
+		String cleanParagraph = paragraph.replaceAll("[^a-zA-Z ]", "").toLowerCase();
 
-		// split the sentence into words
-		String[] words = sentence.split(" ");
+		// Split the paragraph into words
+		String[] words = cleanParagraph.split(" ");
 
+		// Create a Hashtable to store the word-frequency pairs
 		Hashtable<String, Integer> table = new Hashtable<>();
 
-		// process each word in the sentence
+		// Process each word in the paragraph
 		for (String word : words) {
-
-			// check if word is already present in the hashtable
-			if (table.containsKey(word)) {
-
-				// if word already present then increase the count
-				int count = table.get(word);
-				table.put(word, count + 1);
-			} else {
-				// if word is not present in the hashtable, add it to hash table with count 1.
-				table.put(word, 1);
+			// Check if the word is the word we want to remove
+			if (!word.equals("avoidable")) {
+				// If the word is not the word we want to remove, check if it is already present
+				// in the Hashtable
+				if (table.containsKey(word)) {
+					// If the word is already present, increment its frequency count
+					int count = table.get(word);
+					table.put(word, count + 1);
+				} else {
+					// If the word is not present, add it to the Hashtable with a frequency count of
+					// 1
+					table.put(word, 1);
+				}
 			}
 		}
 
-		// print the word and its count
+		// Print the word and its frequency count
 		Enumeration<String> keys = table.keys();
 		while (keys.hasMoreElements()) {
 			String key = keys.nextElement();
 			int value = table.get(key);
-			System.out.println(key + " : " + value);
-
+			System.out.println(key + ": " + value);
 		}
 	}
 
